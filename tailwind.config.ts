@@ -7,10 +7,13 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      pen: ["Nanum Pen Script"],
+    },
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'kakao-background': '#FEE500',
+        'kakao-text': '#3C1E1E',
       },
     },
   },
