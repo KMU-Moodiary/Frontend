@@ -46,7 +46,7 @@ export default function ViewPage({ params }: { params: { id: string } }) {
         <h1 className="mb-4 font-pen text-3xl">{formattedDate}</h1>
         <div className="flex-grow overflow-y-auto">
           <textarea
-            className="w-full bg-transparent focus:outline-none font-pen text-lg"
+            className="w-full bg-transparent focus:outline-none font-pen text-lg disabled:text-black"
             value={content}
             disabled={true}
           />

@@ -21,6 +21,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
   const { setUser } = useUserStore();
 
+  const setVh = () => {
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`)
+  };
+
   useEffect(() => {
     (async () => {
       const token = localStorage.getItem('token');
@@ -41,7 +45,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
       setUser(response.data.content.user);
     })();
-  }, [])
+
+    window.addEventListener('resize', setVh);
+    setVh();
+  }, []);
 
   return (
     <html lang="ko">
@@ -51,7 +58,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
         <title>Moodiary</title>
       </head>
-      <body className="h-screen bg-gray-100">
+      <body className="w-full bg-gray-100">
         {children}
 
         <ToastContainer
