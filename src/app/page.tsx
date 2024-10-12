@@ -31,6 +31,7 @@ export default function MainPage() {
 
   const [diaries, setDiaries] = useState<Diary[]>([])
   const [currentDate, setCurrentDate] = useState(new Date())
+  const [fetching, setFetching] = useState(true)
 
   useEffect(() => {
     (async () => {
@@ -46,6 +47,7 @@ export default function MainPage() {
         if (response.data.content.error) return;
 
         setDiaries(response.data.content.diaries)
+        setFetching(false)
       }
     })();
   }, [])
@@ -97,6 +99,8 @@ export default function MainPage() {
     return days
   }
 
+  if (!nickname || fetching) return null;
+
   return (
     <div className="h-full flex flex-col justify-center relative p-4">
       <div className="max-w-md mx-auto w-full">
@@ -121,7 +125,7 @@ export default function MainPage() {
           {renderCalendar()}
         </div>
       </div>
-      {diaries.find((diary) => new Date(diary.createdAt).toDateString() !== new Date().toDateString()) && (
+      {!(diaries.find((diary) => new Date(diary.createdAt).toDateString() === new Date().toDateString())) && (
         <button className="absolute bottom-6 right-6 rounded-full p-3 shadow-lg bg-black text-white">
           <FaPencilAlt size={24} onClick={() => router.push('/write')} />
         </button>

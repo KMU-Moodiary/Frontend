@@ -45,11 +45,15 @@ export default function ViewPage({ params }: { params: { id: string } }) {
         </div>
         <h1 className="mb-4 font-pen text-3xl">{formattedDate}</h1>
         <div className="flex-grow overflow-y-auto">
-          <textarea
-            className="w-full bg-transparent focus:outline-none font-pen text-lg disabled:text-black"
-            value={content}
-            disabled={true}
-          />
+          <p className="w-full font-pen text-lg">
+            {content.split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </p>
+
         </div>
       </div>
 
