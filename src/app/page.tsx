@@ -121,7 +121,7 @@ export default function MainPage() {
           {renderCalendar()}
         </div>
       </div>
-      {!diaries.find((diary) => new Date(diary.createdAt).toDateString() !== new Date().toDateString()) && (
+      {diaries.find((diary) => new Date(diary.createdAt).toDateString() !== new Date().toDateString()) && (
         <button className="absolute bottom-6 right-6 rounded-full p-3 shadow-lg bg-black text-white">
           <FaPencilAlt size={24} onClick={() => router.push('/write')} />
         </button>
