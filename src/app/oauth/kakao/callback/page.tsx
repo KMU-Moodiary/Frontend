@@ -1,9 +1,12 @@
 'use client'
 
-import {useRouter, useSearchParams} from 'next/navigation';
 import {useEffect} from "react";
-import {axiosInstance} from "@/util";
+
+import {useRouter, useSearchParams} from 'next/navigation';
+
 import {useUserStore} from "@/store";
+
+import {axiosInstance} from "@/util";
 
 export default function CallbackKakaoOauthPage() {
   const router = useRouter();
