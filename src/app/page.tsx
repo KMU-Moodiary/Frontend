@@ -127,7 +127,7 @@ export default function MainPage() {
       </div>
       {!(diaries.find((diary) => new Date(diary.createdAt).toDateString() === new Date().toDateString())) && (
         <button className="absolute bottom-6 right-6 rounded-full p-3 shadow-lg bg-black text-white">
-          <FaPencilAlt size={24} onClick={() => router.push('/write')} />
+          <FaPencilAlt size={24} onClick={() => router.push('/write/new')} />
         </button>
       )}
     </div>
