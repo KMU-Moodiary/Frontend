@@ -8,7 +8,7 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      pen: ["Nanum Pen Script"],
+      pen: ["Ownglyph_ParkDaHyun"],
     },
     extend: {
       colors: {

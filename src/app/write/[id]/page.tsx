@@ -9,6 +9,7 @@ import {TypeAnimation} from "react-type-animation";
 import {Modal} from "@/components";
 
 import {axiosInstance} from "@/util";
+import {toast} from "react-toastify";
 
 export default function DiaryPage({ params }: { params: { id: string } }) {
   const router = useRouter()
@@ -58,6 +59,11 @@ export default function DiaryPage({ params }: { params: { id: string } }) {
   }
 
   const handleSave = async () => {
+    if (content.trim().length === 0) {
+      toast.warning('일기를 입력해주세요.')
+      return;
+    }
+
     setIsModalOpen(true);
     setFeedback('생각을 정리하고 있어요...');
 
@@ -79,10 +85,10 @@ export default function DiaryPage({ params }: { params: { id: string } }) {
     <>
       <div className="p-4 flex flex-col h-full overflow-hidden">
         <div className="flex justify-between items-center mb-4">
-          <FaAngleLeft size={24} onClick={() => router.push('/')}/>
-          <FaSave size={24} onClick={handleSave}/>
+          <FaAngleLeft size={20} onClick={() => router.push('/')} className="text-neutral-700 hover:text-black cursor-pointer" />
+          <FaSave size={20} onClick={handleSave} className="text-neutral-700 hover:text-black cursor-pointer" />
         </div>
-        <h1 className="text-3xl font-pen mb-4">{formattedDate}</h1>
+        <h1 className="text-2xl font-pen mb-4">{formattedDate}</h1>
         <div className="flex-grow overflow-y-auto">
         <textarea
           ref={textareaRef}
@@ -100,9 +106,9 @@ export default function DiaryPage({ params }: { params: { id: string } }) {
       >
         <div className="flex flex-col items-center">
           <FaComment size={36} className="text-neutral-700" />
-          <p className="font-pen text-3xl">AI 피드백</p>
+          <p className="font-pen text-2xl pt-2 pb-4">AI 피드백</p>
           {feedback === '생각을 정리하고 있어요...'
-            ? <div className="inline-block mt-8 h-6 w-6 animate-spin rounded-full border-2 border-solid border-current border-e-transparent" />
+            ? <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-solid border-current border-e-transparent" />
             : <TypeAnimation sequence={[feedback]} speed={2} repeat={0} className="font-pen text-lg" />}
         </div>
       </Modal>

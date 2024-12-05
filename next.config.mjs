@@ -4,7 +4,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'https://moodiary.p-e.kr/api/:path*',
+        destination: 'https://moodiary.daehyeon.cloud/api/:path*',
       },
     ];
   },

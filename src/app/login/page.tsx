@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { RiKakaoTalkFill } from "react-icons/ri";
 
 const KAKAO_REST_API_KEY = '4764b4de54c975f5ef2af1fa835b2458';
-const KAKAO_REDIRECT_URI = 'https://moodiary.p-e.kr/oauth/kakao/callback';
+const KAKAO_REDIRECT_URI = 'https://moodiary.daehyeon.cloud/oauth/kakao/callback';
 
 export default function LoginPage() {
   const router = useRouter();

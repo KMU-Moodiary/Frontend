@@ -88,7 +88,7 @@ export default function MainPage() {
             }
           }}>
             <div
-              className={`w-full h-full flex items-center justify-center ${entry && moodColors[entry.emotion]} rounded-full text-center font-pen text-xl`}>
+              className={`w-8 h-8 flex items-center justify-center ${entry && moodColors[entry.emotion]} rounded-full text-center font-pen text-lg`}>
               {day}
             </div>
           </div>
@@ -104,21 +104,21 @@ export default function MainPage() {
   return (
     <div className="h-full flex flex-col justify-center relative p-4">
       <div className="max-w-md mx-auto w-full">
-        <h1 className="text-3xl mb-4 text-center font-pen">{nickname}님, 오늘을 기록하세요</h1>
+        <h1 className="text-2xl mb-4 text-center font-pen">{nickname}님, 오늘을 기록하세요</h1>
         <div className="mb-4 flex justify-between items-center">
           <button onClick={goToPreviousMonth} className="p-2">
-            <FaAngleLeft size={24} />
+            <FaAngleLeft size={18} />
           </button>
-          <span className="text-2xl font-pen">
+          <span className="text-xl font-pen">
             {currentDate.getFullYear()}년 {currentDate.getMonth() + 1}월
           </span>
           <button onClick={goToNextMonth} className="p-2">
-            <FaAngleRight size={24} className={currentDate.getFullYear() === new Date().getFullYear() && currentDate.getMonth() >= new Date().getMonth() ? 'text-neutral-400' : ''} />
+            <FaAngleRight size={18} className={currentDate.getFullYear() === new Date().getFullYear() && currentDate.getMonth() >= new Date().getMonth() ? 'text-neutral-400' : ''} />
           </button>
         </div>
         <div className="grid grid-cols-7 gap-1">
           {['일', '월', '화', '수', '목', '금', '토'].map((day) => (
-            <div key={day} className="w-10 text-center font-pen text-xl">
+            <div key={day} className="w-10 text-center font-pen text-lg">
               {day}
             </div>
           ))}
@@ -126,8 +126,8 @@ export default function MainPage() {
         </div>
       </div>
       {!(diaries.find((diary) => new Date(diary.createdAt).toDateString() === new Date().toDateString())) && (
-        <button className="absolute bottom-6 right-6 rounded-full p-3 shadow-lg bg-black text-white">
-          <FaPencilAlt size={24} onClick={() => router.push('/write/new')} />
+        <button className="absolute bottom-8 right-8 rounded-full p-3.5 shadow-lg bg-black text-white">
+          <FaPencilAlt size={20} onClick={() => router.push('/write/new')} />
         </button>
       )}
     </div>

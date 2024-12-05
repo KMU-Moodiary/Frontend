@@ -43,14 +43,14 @@ export default function ViewPage({ params }: { params: { id: string } }) {
     <>
       <div className="p-4 flex flex-col h-full overflow-hidden">
         <div className="flex justify-between items-center mb-4">
-          <FaAngleLeft size={24} onClick={() => router.push('/')}/>
-          <div className="flex gap-3">
-            <FaComment size={24} onClick={() => setModalOpen('comment')}/>
-            <FaEdit size={24} onClick={() => router.push(`/write/${params.id}`)}/>
-            <FaTrash size={24} onClick={() => setModalOpen('trash')}/>
+          <FaAngleLeft size={20} onClick={() => router.push('/')} className="text-neutral-700 hover:text-black cursor-pointer" />
+          <div className="flex gap-4">
+            <FaComment size={20} onClick={() => setModalOpen('comment')} className="text-neutral-700 hover:text-black cursor-pointer"/>
+            <FaEdit size={20} onClick={() => router.push(`/write/${params.id}`)} className="text-neutral-700 hover:text-black cursor-pointer" />
+            <FaTrash size={20} onClick={() => setModalOpen('trash')} className="text-neutral-700 hover:text-black cursor-pointer" />
           </div>
         </div>
-        <h1 className="mb-4 font-pen text-3xl">{formattedDate}</h1>
+        <h1 className="mb-4 font-pen text-2xl">{formattedDate}</h1>
         <div className="flex-grow overflow-y-auto">
           <p className="w-full font-pen text-lg">
             {content.split('\n').map((line, index) => (
@@ -70,7 +70,7 @@ export default function ViewPage({ params }: { params: { id: string } }) {
       >
         <div className="flex flex-col items-center">
           <FaComment size={36} className="text-neutral-700"/>
-          <p className="font-pen text-3xl">AI 피드백</p>
+          <p className="font-pen text-2xl pt-2 pb-4">AI 피드백</p>
           <p className="font-pen text-lg">{feedback}</p>
         </div>
       </Modal>
@@ -81,8 +81,8 @@ export default function ViewPage({ params }: { params: { id: string } }) {
       >
         <div className="flex flex-col items-center">
           <FaTrash size={36} className="text-neutral-700"/>
-          <p className="font-pen text-3xl">정말로 삭제하시겠습니까?</p>
-          <div className="flex gap-4 mt-4">
+          <p className="font-pen text-2xl pt-2 pb-4">정말로 삭제하시겠습니까?</p>
+          <div className="flex gap-4">
             <button className="bg-red-500 font-pen text-white px-4 py-1.5 rounded" onClick={async () => {
               await axiosInstance.delete(`/diary/${params.id}`);
               router.push('/');
